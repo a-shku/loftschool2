@@ -15,6 +15,7 @@ body {
     -webkit-font-smoothing: antialiased;
     position: relative;
     font-family: 'Ubuntu-Light';
+    font-size: 1.6rem;
     color: #2f3234;
 }
 
@@ -48,6 +49,21 @@ body {
     height: 100%;
 }
 
+.btn {
+    display: inline-block;
+    vertical-align: top;
+    background: #e45028;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 9px 16px;
+    font-family: 'Ubuntu-Medium';
+    transition: background .3s;
+}
+
 .maincontent {
     height: 100%;
     transition: 1s;
@@ -66,3 +82,81 @@ body {
     background-size: cover;
     position: relative;
 }
+
+.header__logo {
+    float: left;
+    width: 32%;
+}
+
+.logo {
+    display: inline-block;
+}
+
+.header__menu {
+    float: left;
+    width: 68%;
+    padding-top: 16px;
+    letter-spacing: -2px;
+    font-size: 0;   
+}
+
+.nav {
+    width: 83%;
+    display: inline-block;
+    vertical-align: middle;
+    letter-spacing: normal;
+}
+
+.nav__list {
+    width: 100%;
+}
+
+.nav__item {
+    white-space: nowrap;
+    margin-right: 15px;
+    display: block;
+    float: left;
+    
+    &:after{
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: white;
+        margin-left: 15px;
+    }
+    
+    &:last-child:after {
+        display: none;
+    }
+}
+
+.nav__link {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    font-family: 'Ubuntu-Medium';
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.order-link {
+    width: 15%;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 9px 0;
+    margin-left: 2%;
+    letter-spacing: normal;
+    
+    &:hover{
+        background: #c1401e;
+    }
+}
+
