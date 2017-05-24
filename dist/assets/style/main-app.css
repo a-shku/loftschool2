@@ -145,4 +145,32 @@ img {
   font-style: normal;
   font-weight: normal;
 }
+/* font-family: "Lifehack-Medium"; */
+@font-face {
+  font-family: "Lifehack-Medium";
+  src: url("/source/vendor/fonts/Lifehack-Medium.woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
+}
+/* font-family: "ubuntu-b-webfont"; */
+@font-face {
+  font-family: "ubuntu-b-webfont";
+  src: url("/source/vendor/fonts/ubuntu-b-webfont.woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
+}
+/* font-family: "Ubuntu-Medium"; */
+@font-face {
+  font-family: "Ubuntu-Medium";
+  src: url("/source/vendor/fonts/Ubuntu-Medium.woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
+}
+/* font-family: "Ubuntu-Light"; */
+@font-face {
+  font-family: "Ubuntu-Light";
+  src: url("/source/vendor/fonts/Ubuntu-Light.woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
+}
 /* 4. common styles ======================== */
