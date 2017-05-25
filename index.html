@@ -30,7 +30,10 @@
         <div class="maincontent">
             
             <section class="section hero">
-                <div class="container">
+                <video id="myVideo" autoplay="autoplay" class="first-video">
+                    <source src="/dist/assets/img/burger_video.mp4">
+                </video>
+                <div class="container clear-fix">
                     <header class="header clear-fix">
                         <div class="header__logo">
                             <a href="#" class="logo">
@@ -58,7 +61,8 @@
                         </div>
                     </header>
                     <div class="hero__container">
-                        <div class="hero__content">
+                        <div class="container">
+                            <div class="hero__content">
                             <div class="hero__left">
                                 <img src="dist/assets/img/content/burger.png" alt="big burger photo" class="hero__img">
                             </div>
@@ -68,6 +72,7 @@
                                 </p>
                                 <p class="hero__desc">Натуральные бургеры</p>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -127,7 +132,12 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-
+            console.log(document.querySelector('.first-video'));
+            var video = document.getElementById("myVideo");
+            myVideo.onended = function() {
+               
+               $('.first-video').fadeTo( "slow" , 0);
+            };
 
         });
     </script>
