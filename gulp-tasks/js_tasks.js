@@ -18,6 +18,7 @@ paths.bowerComponents = './bower_components/';
 resources.bowerJs = [
     paths.bowerComponents + "jquery/dist/jquery.js",
     paths.bowerComponents + 'jquery.nicescroll/jquery.nicescroll.min.js',
+    paths.bowerComponents + 'owl.carousel/dist/owl.carousel.min.js'
     
 ];
 

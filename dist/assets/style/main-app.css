@@ -310,6 +310,9 @@ body {
 .order-link:hover {
   background: #c1401e;
 }
+.hero .container {
+  position: relative;
+}
 .hero__left {
   float: left;
   width: 50%;
@@ -387,7 +390,42 @@ body {
   position: relative;
   text-align: center;
 }
+.best .container {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 .title__we {
-  margin: 0 auto;
+  margin: 0 auto 80px;
   color: #000;
+}
+.best__item {
+  vertical-align: top;
+  width: 33.3%;
+  padding: 0 10px;
+  float: left;
+}
+.best__icon-image {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 15px;
+}
+.best__title {
+  font-size: 24px;
+  font-family: 'Lifehack-Medium';
+  color: #2f3234;
+  margin-bottom: 20px;
+}
+.best__text {
+  font-family: 'Ubuntu-Light';
+}
+.burgers {
+  background: linear-gradient(to bottom, #f9b43b 0%, #eb8c38 40%, #eb8c38 60%, #eb8c38 60%, #f9b43b 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9b43b', endColorstr='#f9b43b', GradientType=0);
+}
+.slide-item {
+  width: 100%;
+  height: 100%;
+  background: #faf;
 }

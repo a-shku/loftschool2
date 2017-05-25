@@ -14,8 +14,6 @@
     
     
     
-    <script type="text/javascript" src="/dist/assets/js/assets.js"></script>
-    <script type="text/javascript" src="/dist/assets/js/main-app.js"></script>
 
     <script id="__bs_script__">
         document.write("<script async src='https://HOST:8081/browser-sync/browser-sync-client.js?v=2.18.8'><\/script>".replace("HOST", location.hostname));
@@ -30,9 +28,9 @@
         <div class="maincontent">
             
             <section class="section hero">
-                <video id="myVideo" autoplay="autoplay" class="first-video">
-                    <source src="/dist/assets/img/burger_video.mp4">
-                </video>
+                <!--<video id="myVideo" autoplay="autoplay" class="first-video">-->
+                <!--    <source src="/dist/assets/img/burger_video.mp4">-->
+                <!--</video>-->
                 <div class="container clear-fix">
                     <header class="header clear-fix">
                         <div class="header__logo">
@@ -128,7 +126,13 @@
             </section>
             <section class="section burgers">
                 <div class="container">
-                    
+                    <div class="owl-carousel owl-theme owl-loaded owl-drag">
+                        <div class="slide-item"> Your Content111 </div>
+                        <div class="slide-item"> Your Content222 </div>
+                        <div class="slide-item"> Your Content333 </div>
+                        <div class="slide-item"> Your Content444 </div>
+                        
+                    </div>
                 </div>
             </section>
             <section class="section team">
@@ -165,16 +169,28 @@
         
     </div>
 
-
+    <script type="text/javascript" src="/dist/assets/js/assets.js"></script>
+    <script type="text/javascript" src="/dist/assets/js/main-app.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
-            console.log(document.querySelector('.first-video'));
-            var video = document.getElementById("myVideo");
-            myVideo.onended = function() {
+            // console.log(document.querySelector('.first-video'));
+            // var video = document.getElementById("myVideo");
+            // myVideo.onended = function() {
                
-               $('.first-video').fadeTo( "slow" , 0);
-            };
+            //   $('.first-video').fadeTo( "slow" , 0);
+            // };
+            
+            
+            $(".owl-carousel").owlCarousel({
+                nav: true,
+                items: 1,
+                 loop: true,
+                center: true,
+                //autoplay: true,
+                autoplayHoverPause: true
+            });
+
 
         });
     </script>
