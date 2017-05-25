@@ -213,7 +213,6 @@ body {
 }
 .wrapper {
   position: relative;
-  overflow: hidden;
   min-width: 960px;
   height: 100%;
 }
@@ -351,10 +350,44 @@ body {
   -webkit-transition: .3s;
   transition: .3s;
 }
+.down-arrow__icon-wrapper {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.down-arrow svg {
+  width: 30px;
+  height: 30px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  position: relative;
+  top: 0;
+}
+.down-arrow__icon {
+  fill: #fff;
+  display: block;
+}
+.down-arrow:hover svg {
+  top: -10px;
+  width: 35px;
+  height: 35px;
+}
 .first-video {
   min-width: 100%;
   min-height: 100%;
   position: absolute;
   z-index: 0;
   opacity: 0.6;
+}
+.best {
+  background: url(/dist/assets/img/bg/best.jpg) center center no-repeat;
+  background-size: cover;
+  position: relative;
+  text-align: center;
+}
+.title__we {
+  margin: 0 auto;
+  color: #000;
 }
