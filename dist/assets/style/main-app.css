@@ -429,3 +429,15 @@ body {
   height: 100%;
   background: #faf;
 }
+.burgers-slider__left {
+  float: left;
+  width: 50%;
+  padding-top: 95px;
+}
+.burgers-slider__pic {
+  max-width: 100%;
+}
+.burgers-slider__right {
+  float: right;
+  width: 49%;
+}
