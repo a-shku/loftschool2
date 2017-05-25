@@ -424,10 +424,12 @@ body {
   background: linear-gradient(to bottom, #f9b43b 0%, #eb8c38 40%, #eb8c38 60%, #eb8c38 60%, #f9b43b 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9b43b', endColorstr='#f9b43b', GradientType=0);
 }
+.burgers .container {
+  position: relative;
+}
 .slide-item {
   width: 100%;
   height: 100%;
-  background: #faf;
 }
 .burgers-slider__left {
   float: left;
@@ -440,4 +442,76 @@ body {
 .burgers-slider__right {
   float: right;
   width: 49%;
+}
+.burgers-slider__right .section__title {
+  line-height: 1.1em;
+}
+.burgers .section__title {
+  margin-bottom: 15px;
+}
+.section__title.section__title_white {
+  color: white;
+}
+.burgers-slider__text {
+  color: white;
+  margin-bottom: 18px;
+}
+.burgers-slider__price {
+  display: inline-block;
+  vertical-align: middle;
+  color: #e35028;
+  font-family: 'Gagalin-Regular';
+}
+.burgers-slider__price-amount {
+  font-size: 72px;
+}
+.burgers-slider__price-amount,
+.burgers-slider__price-measure {
+  display: inline-block;
+  vertical-align: bottom;
+  line-height: 1;
+}
+.burgers-slider__price-measure {
+  font-size: 30px;
+}
+.burgers-slider__buy {
+  display: inline-block;
+  vertical-align: bottom;
+  margin-left: 32px;
+}
+.burger-slider__btn_next {
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.burger-slider__btn_next {
+  right: -45px;
+}
+.burger-slider__btn_next,
+.burger-slider__btn_prev {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 10;
+}
+.burger-slider__arrow {
+  fill: #fff;
+  display: block;
+  height: 30px;
+  width: 35px;
+  transition: .3s;
+}
+.burger-slider__btn_prev {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.burger-slider__btn_prev {
+  left: -42px;
+}
+.burger-slider__btn_next {
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.burger-slider__btn:hover .burger-slider__arrow {
+  width: 40px;
 }

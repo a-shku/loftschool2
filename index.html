@@ -126,6 +126,16 @@
             </section>
             <section class="section burgers">
                 <div class="container">
+                    <a class="burger-slider__btn burger-slider__btn_prev owl-prev" href="#">
+                        <svg class="burger-slider__arrow">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="dist/assets/img/icons/sprite.svg#arrow-scroll"></use>
+                        </svg>
+                    </a>
+                    <a class="burger-slider__btn burger-slider__btn_next owl-next" href="#">
+                        <svg class="burger-slider__arrow">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="dist/assets/img/icons/sprite.svg#arrow-scroll"></use>
+                        </svg>
+                    </a>
                     <ul class="owl-carousel owl-theme owl-loaded owl-drag">
                         <li class="slide-item"> 
                             <div class="burgers-slider__left">
@@ -266,13 +276,24 @@
             // };
             
             
-            $(".owl-carousel").owlCarousel({
-                nav: true,
+            var slider = $(".owl-carousel").owlCarousel({
+                nav: false,
+                dots: false,
                 items: 1,
-                 loop: true,
+                loop: true,
                 center: true,
                 autoplay: true,
                 autoplayHoverPause: true
+            });
+            
+            $('.owl-next').on('click', function(e) {
+                e.preventDefault();
+                slider.trigger('next.owl.carousel');
+            });
+
+            $('.owl-prev').on('click', function(e) {
+                e.preventDefault();
+                slider.trigger('prev.owl.carousel');
             });
 
 
