@@ -333,9 +333,55 @@
                 </div>
             </section>
             <section class="section team">
-                <div class="container">
-                    
-                </div>
+            <div class="team__section">
+                <div class="section__title">Команда</div>
+                <ul class="team-acco">
+                    <li class="team-acco__item clear-fix"><a class="team-acco__trigger" href="#">дэниэл редклифф</a>
+                        <div class="team-acco__content">
+                            <div class="team-acco__pic">
+                                <div class="team-acco__img" style="background-image: url('/dist/assets/img/content/teammate.jpg')"></div>
+                            </div>
+                            <div class="team-acco__text">
+                                <div class="team-acco__title">Шеф-повар</div>
+                                <div class="team-acco__text-content">С радостью поможет подобрать идеальный бургер и оформить заказ.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="team-acco__item clear-fix"><a class="team-acco__trigger" href="#">ричард джеймс</a>
+                        <div class="team-acco__content">
+                            <div class="team-acco__pic">
+                                <div class="team-acco__img" style="background-image: url('/dist/assets/img/content/teammate.jpg')"></div>
+                            </div>
+                            <div class="team-acco__text">
+                                <div class="team-acco__title">Оператор</div>
+                                <div class="team-acco__text-content">С радостью поможет подобрать идеальный бургер и оформить заказ.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="team-acco__item clear-fix"><a class="team-acco__trigger" href="#">Джейк Финн</a>
+                        <div class="team-acco__content">
+                            <div class="team-acco__pic">
+                                <div class="team-acco__img" style="background-image: url('/dist/assets/img/content/teammate.jpg')"></div>
+                            </div>
+                            <div class="team-acco__text">
+                                <div class="team-acco__title">Менеджер</div>
+                                <div class="team-acco__text-content">С радостью поможет подобрать идеальный бургер и оформить заказ.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="team-acco__item clear-fix"><a class="team-acco__trigger" href="#">Николай Иванов</a>
+                        <div class="team-acco__content">
+                            <div class="team-acco__pic">
+                                <div class="team-acco__img" style="background-image: url('/dist/assets/img/content/teammate.jpg')"></div>
+                            </div>
+                            <div class="team-acco__text">
+                                <div class="team-acco__title">Шоколатье</div>
+                                <div class="team-acco__text-content">С радостью поможет подобрать идеальный бургер и оформить заказ.</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
             </section>
             <section class="section menu">
                 <div class="container">
@@ -398,6 +444,37 @@
                 e.preventDefault();
                 slider.trigger('prev.owl.carousel');
             });
+            
+            //
+            //accordion
+            $(function() {
+                $('.team-acco__trigger').on('click', function(e) {
+                    e.preventDefault();
+            
+                    var $this = $(this),
+                        item = $this.closest('.team-acco__item'),
+                        container = $this.closest('.team-acco'),
+                        items = container.find('.team-acco__item'),
+                        content = item.find('.team-acco__content'),
+                        otherContent = container.find('.team-acco__content');
+            
+                    if (!item.hasClass('active')) {
+            
+                        items.removeClass('active');
+                        item.addClass('active');
+                        otherContent.slideUp();
+                        content.slideDown();
+            
+                    }
+                    else {
+            
+                        item.removeClass('active');
+                        content.slideUp();
+            
+                    }
+                });
+            });
+            //
 
 
         });

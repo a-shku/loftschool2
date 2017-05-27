@@ -625,3 +625,116 @@ body {
   color: #fff;
   font-family: 'Gagalin-Regular';
 }
+.team {
+  background: url(../img/bg/team.jpg) 50% no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.team__section {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  background: rgba(47, 50, 52, 0.93);
+  padding: 5% 2% 0% 7%;
+}
+.team .section__title {
+  margin-bottom: 12%;
+}
+.section__title {
+  color: #f9b43b;
+  font-size: 72px;
+  font-family: 'Gagalin-Regular';
+  margin-bottom: 12px;
+}
+.team-acco {
+  padding-left: 17px;
+}
+.team-acco__item {
+  margin-bottom: 40px;
+}
+.team-acco__item.active .team-acco__trigger {
+  color: #f9b43b;
+}
+.team-acco__item.active .team-acco__trigger:before {
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+.team-acco__trigger {
+  color: #fff;
+  font-size: 14px;
+  font-family: 'Gagalin-Regular';
+  text-decoration: none;
+  position: relative;
+  display: block;
+}
+.team-acco__trigger:before {
+  border-top: 7px solid #f9b43b;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 0px solid transparent;
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+.team-acco__trigger:before,
+.team-acco__trigger:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -18px;
+  top: 8px;
+  width: 0;
+  height: 0;
+}
+.nav__list:before,
+.menu-acco:before,
+.order__form:before,
+.order__form-row:before,
+.reviews__list:before,
+.team-acco__content:before,
+.nav__list:after,
+.menu-acco:after,
+.order__form:after,
+.order__form-row:after,
+.reviews__list:after,
+.team-acco__content:after {
+  content: "";
+  display: table;
+}
+.team-acco__content {
+  padding-top: 14px;
+  display: none;
+}
+.team-acco__pic {
+  float: left;
+  text-align: center;
+  width: 30%;
+}
+.team-acco__img {
+  display: inline-block;
+  vertical-align: top;
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+.team-acco__text {
+  float: left;
+  width: 70%;
+}
+.team-acco__title {
+  font-family: 'ubuntubold';
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.team-acco__text-content {
+  font-family: 'Ubuntu-Light';
+  color: #fff;
+  font-size: 14px;
+}
