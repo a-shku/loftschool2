@@ -1018,3 +1018,54 @@ body {
   text-transform: none;
   background: transparent;
 }
+.footer {
+  background: url(../img/bg/footer.jpg) center bottom no-repeat;
+  height: 60px;
+  background-size: cover;
+  padding-top: 10px;
+  font-family: 'Ubuntu-Light';
+}
+.footer__col {
+  float: left;
+  width: 50%;
+}
+.footer__address {
+  color: #ffffff;
+  font-size: 14px;
+}
+.footer__phone {
+  color: #e35028;
+  font-family: 'Ubuntu-Medium';
+  text-decoration: none;
+  font-size: 14px;
+}
+.footer__col_right {
+  text-align: right;
+  padding-top: 9px;
+}
+.socials {
+  position: relative;
+  top: 50%;
+}
+.socials__item {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 13px;
+}
+.socials__link {
+  display: inline-block;
+  max-width: 23px;
+  max-height: 20px;
+  opacity: .3;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+.socials__link:hover {
+  opacity: 1;
+}
+.socials__icon {
+  display: block;
+  width: 23px !important;
+  height: 23px !important;
+  fill: #fff;
+}
