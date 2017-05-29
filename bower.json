@@ -23,6 +23,7 @@
     "bower": "*",
     "install": "^1.0.4",
     "owl.carousel": "^2.2.1",
-    "inputmask": "^3.3.6"
+    "inputmask": "^3.3.6",
+    "onepage-scroll": "^1.3.1"
   }
 }

@@ -24,7 +24,8 @@ resources = {
     assestCss: [
         paths.bowerComponents + 'font-awesome/css/font-awesome.min.css',
         paths.bowerComponents + 'owl.carousel/dist/assets/owl.carousel.css',
-        paths.bowerComponents + 'owl.carousel/dist/assets/owl.theme.default.css'
+        paths.bowerComponents + 'owl.carousel/dist/assets/owl.theme.default.css',
+        paths.bowerComponents + 'onepage-scroll/onepage-scroll.css'
     ]
 };
 
