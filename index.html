@@ -407,7 +407,7 @@
                         <div class="menu-acco__content" style="width: 0px;">
                             <div class="menu-acco__text">
                                 Речевой акт редуцирует диалектический характер. Развивая эту тему, заимствование редуцирует конструктивный механизм сочленений. Лирический субъект начинает диссонансный анжамбеман. Наш современник стал особенно чутко относиться к слову, однако механизм
-                                сочленений неустойчив. Модальность высказывания, как справедливо считает И.Гальперин, пространственно выбирает метр. Речевой акт редуцирует диалектический характер. Развивая эту тему, заимствование редуцирует конструктивный механизм
+                                сочленений неустойчив. Модальность высказывания, как справедливо считает И.Гальперин, пространственно выбирает метр. Речевой а��т редуцирует диалектический характер. Развивая эту тему, заимствование редуцирует конструктивный механизм
                                 сочленений. Лирический субъект начинает диссонансный анжамбеман. Наш современник стал особенно чутко относиться к слову.
                             </div>
                         </div>
@@ -419,7 +419,7 @@
                         <div class="menu-acco__content" style="width: 0px;">
                             <div class="menu-acco__text">
                                 Речевой акт редуцирует диалектический характер. Развивая эту тему, заимствование редуцирует конструктивный механизм сочленений. Лирический субъект начинает диссонансный анжамбеман. Наш современник стал особенно чутко относиться к слову, однако механизм
-                                сочленений неустойчив. Модальность высказывания, как справедливо считает И.Гальперин, пространственно выбирает метр. Речевой акт редуцирует диалектический характер. Развивая эту тему, заимствование редуцирует конструктивный механизм
+                                сочленений неустойчив. Модальность высказывания, как справедливо считает И.Гальперин, пространственно выбирает метр. Речевой акт редуцирует диалектический характер. Развива�� эту тему, заимствование редуцирует конструктивный механизм
                                 сочленений. Лирический субъект начинает диссонансный анжамбеман. Наш современник стал особенно чутко относиться к слову.
                             </div>
                         </div>
@@ -524,7 +524,7 @@
         										</label>
                                 <label class="order__form-block">
         											<div class="order__form-label">Телефон</div>
-        											<input class="order__form-input phone-mask" name="phone" type="text" placeholder="">
+        											<input class="order__form-input phone-mask"  name="phone" type="text" placeholder="">
         										</label>
                             </div>
                             <div class="order__form-row">
@@ -590,7 +590,7 @@
             
             <section class="section map">
                 
-                <div id="map" style="width:100%; height:500px;"></div>
+                <div id="map" style="width:100%; height: calc(100vh - 60px);"></div>
                 <footer class="footer">
                     <div class="container">
                         <div class="footer__col">
@@ -642,7 +642,14 @@
     <script type="text/javascript" src="/dist/assets/js/main-app.js"></script>
 
     <script type="text/javascript">
+    
+       
+    
         $(document).ready(function() {
+
+             $('.phone-mask').inputmask({"mask": "+7 (999) 999-9999"});
+            
+            
             // console.log(document.querySelector('.first-video'));
             // var video = document.getElementById("myVideo");
             // myVideo.onended = function() {
@@ -766,46 +773,275 @@
             //         }
             //     )});
             
-            $(function() {
-                ymaps.ready(init);
-                var myMap;
+            // $(function() {
+            //     ymaps.ready(init);
+            //     var myMap;
 
-                function init() {
-                    myMap = new ymaps.Map("map", {
-                        center: [50.0, 36.20],
-                        zoom: 14,
-                        controls: [],
-                    }, {
-                         searchControlProvider: 'yandex#search'
-                     });
+            //     function init() {
+            //         myMap = new ymaps.Map("map", {
+            //             center: [50.0, 36.20],
+            //             zoom: 14,
+            //             controls: [],
+            //         }, {
+            //              searchControlProvider: 'yandex#search'
+            //          });
 
-                    var coords = [
-                            [59.94554327989287, 30.38935262114668],
-                            [59.91142323563909, 30.50024587065841],
-                            [59.88693161784606, 30.319658102103713],
-                            [59.97033574821672, 30.315194906302924],
-                        ],
-                        myCollection = new ymaps.GeoObjectCollection({}, {
-                            draggable: false,
-                            iconLayout: 'default#image',
-                            iconImageHref: '/dist/assets/img/icons/map-marker.svg',
-                            iconImageSize: [46, 57],
-                            iconImageOffset: [-26, -52]
-                        });
+            //         var coords = [
+            //                 [59.94554327989287, 30.38935262114668],
+            //                 [59.91142323563909, 30.50024587065841],
+            //                 [59.88693161784606, 30.319658102103713],
+            //                 [59.97033574821672, 30.315194906302924],
+            //             ],
+            //             myCollection = new ymaps.GeoObjectCollection({}, {
+            //                 draggable: false,
+            //                 iconLayout: 'default#image',
+            //                 iconImageHref: '/dist/assets/img/icons/map-marker.svg',
+            //                 iconImageSize: [46, 57],
+            //                 iconImageOffset: [-26, -52]
+            //             });
 
-                    for (var i = 0; i < coords.length; i++) {
-                        myCollection.add(new ymaps.Placemark(coords[i]));
-                    }
+            //         for (var i = 0; i < coords.length; i++) {
+            //             myCollection.add(new ymaps.Placemark(coords[i]));
+            //         }
 
-                    myMap.geoObjects.add(myCollection);
+            //         myMap.geoObjects.add(myCollection);
 
-                    myMap.behaviors.disable('scrollZoom');
-                };
+            //         myMap.behaviors.disable('scrollZoom');
+            //     };
                 
                 
-                var placemark = new YMaps.Placemark(new YMaps.GeoPoint(50.0, 36.20));
+            //     var placemark = new YMaps.Placemark(new YMaps.GeoPoint(50.0, 36.20));
+            //     map.addOverlay(placemark);
                 
+            // });
+            
+            ymaps.ready(function () {
+        	var myPlacemark;
+            var myMap = new ymaps.Map('map', {
+            center: [50.0, 36.20],
+            zoom: 14,
+            behaviors: ['default', 'scrollZoom']
+        }, {
+            searchControlProvider: 'yandex#search'
+        }),
+		/*тест макета*/
+			 BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
+            '<div style="margin: 10px;">' +
+                '<b>{{properties.name}}</b><br />' +
+                '<i id="count"></i> ' +
+                '<button id="counter-button"> +1 </button>' +
+            '</div>', {
+
+            // Переопределяем функцию build, чтобы при создании макета начинать
+            // слушать событие click на кнопке-счетчике.
+            build: function () {
+                // Сначала вызываем метод build родительского класса.
+                BalloonContentLayout.superclass.build.call(this);
+                // А затем выполняем дополнительные действия.
+                $('#counter-button').bind('click', this.onCounterClick);
+                $('#count').html(counter);
+            }
+
+        });
+		/*тест макета*/
+             // Создаем собственный макет с информацией о выбранном геообъекте.
+	
+		clusterer = new ymaps.Clusterer({
+        clusterDisableClickZoom: true,
+        clusterOpenBalloonOnClick: true,
+        clusterBalloonContentLayout: 'cluster#balloonCarousel',
+        
+        clusterBalloonPanelMaxMapArea: 0,
+        // Устанавливаем размеры макета контента балуна (в пикселях).
+        clusterBalloonContentLayoutWidth: 200,
+        clusterBalloonContentLayoutHeight: 130,
+        // Устанавливаем максимальное количество элементов в нижней панели на одной странице
+        clusterBalloonPagerSize: 5
+       
+    }),
+            getPointData = function (index) {
+            return {
+                balloonContentBody: 'балун <strong>метки ' + index + '</strong>',
+                clusterCaption: 'метка <strong>' + index + '</strong>'
+            };
+        },
+            getPointOptions = function () {
+            return {
+                preset: 'islands#violetIcon'
+            };
+        },
+       points = [
+            [49.951903,36.211961], [49.996188294179, 36.101912435790915], [49.981329,36.242781], [49.954708,36.248870], [49.953123,36.206067]
+        ],
+        geoObjects = [];
+    for(var i = 0, len = points.length; i < len; i++) {
+        geoObjects[i] = new ymaps.Placemark(points[i], getPointData(i), getPointOptions());
+    }
+    clusterer.options.set({
+        gridSize: 80,
+        clusterDisableClickZoom: true
+    });
+    clusterer.add(geoObjects);
+    myMap.geoObjects.add(clusterer);
+    myMap.setBounds(clusterer.getBounds(), {
+        checkZoomRange: true
+    });
+	
+	// Слушаем клик на карте
+    myMap.events.add('click', function (e) {
+        var coords = e.get('coords'),
+			address = getAddress(coords);
+		//var present;
+		address.then(function(gotAddress){
+			console.log(gotAddress.properties.get('name'));
+			
+				/*get reviews*/
+			new Promise(function(resolve, reject){
+				var xhr = new XMLHttpRequest();
+					xhr.responseType = 'json';
+					
+					xhr.open('post', 'http://localhost:3000/', true);
+					xhr.send(JSON.stringify({
+						op: 'get',
+						address: gotAddress.properties.get('text'),
+					}));
+					xhr.onload = function(){
+						console.log(xhr.response.length);
+
+						resolve(xhr.response);
+					};/*/get reviews*/
+			}).then(function(present){
+			/*окно добавления*/
+			console.log(present);
+			var wrapForRev;
+			if(present.length < 1){
+				wrapForRev = 'нет отзывов'
+			} else{
+				var list = document.createElement('ul');
+					list.classList.add('reviewsList');
+				for(var i = 0; i<present.length; i++){
+						delete present[i].coords;
+					var li = document.createElement('li');
+					for(var getReviews in present[i]){
+						
+						if(getReviews == 'date'){
+							//alert(new Date(present[i][getReviews]));
+							var date = new Date(present[i][getReviews]);
+								console.log(getReviews +' = ' + date);
+					li.innerHTML += '<p class="date">'+date+'</p>';
+						}
+						else if(getReviews == 'address'){}
+						else{
+							console.log(getReviews +' = ' + present[i][getReviews]);
+					li.innerHTML += '<p>'+present[i][getReviews]+'</p>';
+						}
+						
+					}
+					list.appendChild(li);
+				}
+								
+				var wrapForRev = document.createElement('div');
+					wrapForRev.setAttribute('id', 'pres');
+				
+				wrapForRev.appendChild(list);
+				var wrapForRev = wrapForRev.innerHTML;
+			}
+			
+			new Promise(function(resolve, reject){
+				console.log(wrapForRev);
+				if (!myMap.balloon.isOpen()) {
+					myMap.balloon.open(coords,
+				
+				{contentHeader: gotAddress.properties.get('text')/*+gotAddress.properties.get('name')*/,
+                contentBody: '<div style="max-height:150px; overflow-y:auto;">'+wrapForRev+'</div>' +
+				    '<p>ОСТАВИТЬ ОТЗЫВ</p>'+'<input id="name1" placeholder="Name"><br><input id="place" placeholder="Place"><br>'+'<textarea id="review" placeholder="review"></textarea>',
+                contentFooter:'<button id="send" class="class1">Send</button>'
             });
+			}
+			else {
+				myMap.balloon.close();
+			}
+				
+			document.addEventListener('click',function(e){
+				if (e.target.classList.contains('class1')){
+				   
+				var name2 = name1.value;
+				console.log(name2);
+				var place1 = place.value;
+				console.log(place.value);
+				var text = review.value;
+				console.log(text);
+				
+				placeMarkToMap(coords, gotAddress.properties.get('name'), name2, place1, text);
+				 myMap.balloon.close();
+	
+				};
+	
+			});
+
+				resolve();
+			})}).then(function(){
+				console.log('button', document.getElementsByTagName('button'));
+				var button = document.getElementsByTagName('button')
+	
+			});
+			
+		});
+    });
+	
+
+	function placeMarkToMap(coords, address, name, place, text){
+		myPlacemark = createPlacemark(coords);
+			myPlacemark.properties
+                .set({
+                    //iconContent: name,
+					balloonContentHeader: address +'<br> '+ place,
+					balloonContentBody: text,
+					balloonContentFooter: name
+                });
+		clusterer.add(myPlacemark);		
+	};
+	
+    // Создание метки
+    function createPlacemark(coords) {
+        return new ymaps.Placemark(coords, {
+            //iconContent: 'поиск...'
+        }, {
+            preset: 'islands#violetStretchyIcon',
+            draggable: true
+        });
+    }
+
+    // Определяем адрес по координатам (обратное геокодирование)
+    function getAddress(coords) {
+        return ymaps.geocode(coords).then(function (res) {
+            return res.geoObjects.get(0);
+
+        });
+    };
+	
+	
+	
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         });
@@ -815,6 +1051,16 @@
 </body>
 
 </html>
+
+<!--
+модальное окно
+скролл
+отправка письма
+валижация
+навигация
+вертикальное меню
+-->
+
 
 <!--
 структура проекта
