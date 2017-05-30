@@ -29,7 +29,7 @@
     <div class="wrapper" style="font-family: 'Gagalin-Regular'">
         <div class="maincontent">
             
-            <section class="section hero">
+            <section id="hero"  class="section hero">
                 <!--<video id="myVideo" autoplay="autoplay" class="first-video">-->
                 <!--    <source src="/dist/assets/img/burger_video.mp4">-->
                 <!--</video>-->
@@ -43,21 +43,21 @@
                         <div class="header__menu">
                             <nav class="nav">
                                 <ul class="nav__list clear-fix">
-                                    <li class="nav__item"><a class="nav__link" href="#">о нас</a>
+                                    <li class="nav__item"><a class="nav__link" href="#best">о нас</a>
                                     </li>
-                                    <li class="nav__item"><a class="nav__link" href="#">бургеры</a>
+                                    <li class="nav__item"><a class="nav__link" href="#burgers">бургеры</a>
                                     </li>
-                                    <li class="nav__item"><a class="nav__link" href="#">команда</a>
+                                    <li class="nav__item"><a class="nav__link" href="#team">команда</a>
                                     </li>
-                                    <li class="nav__item"><a class="nav__link" href="#">меню</a>
+                                    <li class="nav__item"><a class="nav__link" href="#menu">меню</a>
                                     </li>
-                                    <li class="nav__item"><a class="nav__link" href="#">отзывы</a>
+                                    <li class="nav__item"><a class="nav__link" href="#reviews">отзывы</a>
                                     </li>
-                                    <li class="nav__item"><a class="nav__link" href="#">контакты</a>
+                                    <li class="nav__item"><a class="nav__link" href="#order">контакты</a>
                                     </li>
                                 </ul>
                             </nav>
-                            <a class="order-link btn" href="#">Заказать</a>
+                            <a class="order-link btn" href="#order">Заказать</a>
                         </div>
                     </header>
                     <div class="hero__container">
@@ -84,7 +84,7 @@
                           </span>
                 </a>
             </section>
-            <section class="section best">
+            <section id="best"  class="section best">
                 <div class="container">
                     <p class="section__title title__we">
                         Мы лучшие
@@ -126,7 +126,7 @@
                     </ul>
                 </div>
             </section>
-            <section class="section burgers">
+            <section id="burgers"  class="section burgers">
                 <div class="container clear-fix">
                     <div class="burger-slider-wrap">
                         <a class="burger-slider__btn burger-slider__btn_prev owl-prev" href="#">
@@ -334,7 +334,7 @@
                     
                 </div>
             </section>
-            <section class="section team">
+            <section id="team"  class="section team">
             <div class="team__section">
                 <div class="section__title">Команда</div>
                 <ul class="team-acco">
@@ -385,7 +385,7 @@
                 </ul>
             </div>
             </section>
-            <section class="section menu">
+            <section id="menu"  class="section menu">
                 <div class="section__title section__title_white menu__title">Меню</div>
                 <ul class="menu-acco">
                     <li class="menu-acco__item">
@@ -426,7 +426,7 @@
                     </li>
                 </ul>
             </section>
-            <section class="section reviews active">
+            <section id="reviews"  class="section reviews active">
                 <ul class="reviews__list">
                     <li class="reviews__item">
                         <div class="review">
@@ -510,8 +510,7 @@
                     </li>
                 </ul>
             </section>
-           
-            <section class="section order">
+            <section id="order"  class="section order">
             <div class="container">
                 <div class="section__title">Закажите доставку</div>
                 <div class="order__form">
@@ -520,7 +519,7 @@
                             <div class="order__form-row order__form-row_double">
                                 <label class="order__form-block">
         											<div class="order__form-label">Имя</div>
-        											<input class="order__form-input" name="name" type="text" placeholder="">
+        											<input class="order__form-input" required="" data-parsley-trigger="change" name="name" type="text" placeholder="">
         										</label>
                                 <label class="order__form-block">
         											<div class="order__form-label">Телефон</div>
@@ -587,8 +586,7 @@
                 </div>
             </div>
         </section>
-            
-            <section class="section map">
+            <section id="map"  class="section map">
                 
                 <div id="map" style="width:100%; height: calc(100vh - 60px);"></div>
                 <footer class="footer">
@@ -670,8 +668,13 @@
         $(document).ready(function() {
             
             
+            $('#order-form').parsley();
+            
               //////////////
             $(function() {
+                $('.review__view').click(function(e){
+                    e.target.preventDefault;
+                })
                 $('.review__view').fancybox({
                     type: 'inline',
                     maxWidth: 460,
@@ -1128,7 +1131,6 @@
 </html>
 
 <!--
-модальное окно
 скролл
 отправка письма
 валижация

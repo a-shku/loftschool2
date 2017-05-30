@@ -25,6 +25,7 @@
     "owl.carousel": "^2.2.1",
     "inputmask": "^3.3.6",
     "onepage-scroll": "^1.3.1",
-    "fancybox": "^3.0.47"
+    "fancybox": "^3.0.47",
+    "parsleyjs": "^2.7.2"
   }
 }

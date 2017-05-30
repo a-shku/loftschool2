@@ -26,7 +26,8 @@ resources = {
         paths.bowerComponents + 'owl.carousel/dist/assets/owl.carousel.css',
         paths.bowerComponents + 'owl.carousel/dist/assets/owl.theme.default.css',
         paths.bowerComponents + 'onepage-scroll/onepage-scroll.css',
-        paths.bowerComponents + 'fancybox/dist/jquery.fancybox.css'
+        paths.bowerComponents + 'fancybox/dist/jquery.fancybox.css',
+        paths.bowerComponents + 'parsleyjs/src/parsley.css'
     ]
 };
 

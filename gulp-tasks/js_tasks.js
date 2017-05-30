@@ -21,9 +21,8 @@ resources.bowerJs = [
     paths.bowerComponents + 'owl.carousel/dist/owl.carousel.min.js',
     paths.bowerComponents + 'inputmask/dist/min/jquery.inputmask.bundle.min.js',
     paths.bowerComponents + 'onepage-scroll/jquery.onepage-scroll.min.js',
-    paths.bowerComponents + 'fancybox/dist/jquery.fancybox.js'
-    
-    
+    paths.bowerComponents + 'fancybox/dist/jquery.fancybox.js',
+    paths.bowerComponents + 'parsleyjs/dist/parsley.min.js'
 ];
 
 gulp.task('clean:js:assets', function () {
