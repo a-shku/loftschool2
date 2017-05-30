@@ -1108,3 +1108,10 @@ body {
   overflow: auto;
   width: 460px;
 }
+.parsley-errors-list.filled {
+  background: rgba(200, 200, 200, 0.5);
+  color: red;
+}
+.parsley-errors-list.filled li {
+  padding: 4px 0;
+}
