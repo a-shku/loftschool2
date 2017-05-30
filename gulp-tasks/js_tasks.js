@@ -20,7 +20,8 @@ resources.bowerJs = [
     paths.bowerComponents + 'jquery.nicescroll/jquery.nicescroll.min.js',
     paths.bowerComponents + 'owl.carousel/dist/owl.carousel.min.js',
     paths.bowerComponents + 'inputmask/dist/min/jquery.inputmask.bundle.min.js',
-    paths.bowerComponents + 'onepage-scroll/jquery.onepage-scroll.min.js'
+    paths.bowerComponents + 'onepage-scroll/jquery.onepage-scroll.min.js',
+    paths.bowerComponents + 'fancybox/dist/jquery.fancybox.js'
     
     
 ];

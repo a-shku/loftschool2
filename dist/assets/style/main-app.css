@@ -1069,3 +1069,42 @@ body {
   height: 23px !important;
   fill: #fff;
 }
+.fancybox-overlay {
+  background: rgba(47, 50, 52, 0.92);
+}
+.full-review {
+  padding: 25px 20px;
+  position: relative;
+}
+.full-review__close {
+  width: 15px;
+  height: 15px;
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  opacity: .7;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+.full-review__close svg {
+  width: 100%;
+  height: 100%;
+}
+.full-review__title {
+  font-family: 'Gagalin-Regular';
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+.full-review__content {
+  font-size: 14px;
+  font-family: 'Ubuntu-Light';
+}
+.fancybox-close-small {
+  display: none;
+}
+.full-review__inner {
+  overflow: auto;
+  width: 460px;
+}
