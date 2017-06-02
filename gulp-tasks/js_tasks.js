@@ -21,7 +21,8 @@ resources.bowerJs = [
     paths.bowerComponents + 'owl.carousel/dist/owl.carousel.min.js',
     paths.bowerComponents + 'inputmask/dist/min/jquery.inputmask.bundle.min.js',
     paths.bowerComponents + 'onepage-scroll/jquery.onepage-scroll.min.js',
-    paths.bowerComponents + 'fancybox/dist/jquery.fancybox.js',
+    //paths.bowerComponents + 'fancybox/dist/jquery.fancybox.js',
+    paths.bowerComponents + 'fancybox/source/jquery.fancybox.js',
     paths.bowerComponents + 'parsleyjs/dist/parsley.min.js'
 ];
 
@@ -47,8 +48,6 @@ gulp.task('clean:js:app', function () {
 });
 
 gulp.task('js:app', ['clean:js:app'], function() {
-    console.log('resources.bowerJs', resources.bowerJs);
-
     return gulp.src('source/custom/js/**/*js')
         .pipe(plugins.concat('main-app.js'))
         .pipe(plugins.size({

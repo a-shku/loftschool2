@@ -141,35 +141,35 @@ img {
 /* font-family: "Gagalin-Regular"; */
 @font-face {
   font-family: "Gagalin-Regular";
-  src: url("/source/vendor/fonts/Gagalin-Regular.woff") format("woff");
+  src: url("../fonts/Gagalin-Regular.woff") format("woff");
   font-style: normal;
   font-weight: normal;
 }
 /* font-family: "Lifehack-Medium"; */
 @font-face {
   font-family: "Lifehack-Medium";
-  src: url("/source/vendor/fonts/Lifehack-Medium.woff") format("woff");
+  src: url("../fonts/Lifehack-Medium.woff") format("woff");
   font-style: normal;
   font-weight: normal;
 }
 /* font-family: "ubuntu-b-webfont"; */
 @font-face {
   font-family: "ubuntu-b-webfont";
-  src: url("/source/vendor/fonts/ubuntu-b-webfont.woff") format("woff");
+  src: url("../fonts/ubuntu-b-webfont.woff") format("woff");
   font-style: normal;
   font-weight: normal;
 }
 /* font-family: "Ubuntu-Medium"; */
 @font-face {
   font-family: "Ubuntu-Medium";
-  src: url("/source/vendor/fonts/Ubuntu-Medium.woff") format("woff");
+  src: url("../fonts/Ubuntu-Medium.woff") format("woff");
   font-style: normal;
   font-weight: normal;
 }
 /* font-family: "Ubuntu-Light"; */
 @font-face {
   font-family: "Ubuntu-Light";
-  src: url("/source/vendor/fonts/Ubuntu-Light.woff") format("woff");
+  src: url("../fonts/Ubuntu-Light.woff") format("woff");
   font-style: normal;
   font-weight: normal;
 }
@@ -244,7 +244,7 @@ body {
   z-index: 1;
 }
 .hero {
-  background: url(/dist/assets/img/bg/hero-bg.jpg) center center no-repeat;
+  background: url(../img/bg/hero-bg.jpg) center center no-repeat;
   background-size: cover;
   position: relative;
 }
@@ -388,7 +388,7 @@ body {
   opacity: 0.6;
 }
 .best {
-  background: url(/dist/assets/img/bg/best.jpg) center center no-repeat;
+  background: url(../img/bg/best.jpg) center center no-repeat;
   background-size: cover;
   position: relative;
   text-align: center;
@@ -747,7 +747,7 @@ body {
   font-size: 14px;
 }
 .menu {
-  background: url(/dist/assets/img/bg/menu.jpg) 50% no-repeat;
+  background: url(../img/bg/menu.jpg) 50% no-repeat;
   background-size: cover;
   position: relative;
 }
@@ -878,7 +878,7 @@ body {
   transition: .3s;
 }
 .order {
-  background: url('/dist/assets/img/bg/order.jpg') 50% no-repeat;
+  background: url('../img/bg/order.jpg') 50% no-repeat;
   background-size: cover;
 }
 .order .container {
@@ -1114,4 +1114,18 @@ body {
 }
 .parsley-errors-list.filled li {
   padding: 4px 0;
+}
+.status-popup {
+  width: 240px;
+}
+.status-popup__inner {
+  padding: 20px;
+  text-align: center;
+}
+.status-popup__message {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+.error-message {
+  color: #e35028;
 }
