@@ -26,13 +26,13 @@
 
 <body>
 
-    <div class="wrapper" style="font-family: 'Gagalin-Regular'">
-        <div class="maincontent">
+    <div class="wrapper"   style="font-family: 'Gagalin-Regular'">
+        <div class="maincontent" id="maincontent">
             
             <section id="hero"  class="section hero">
-                <!--<video id="myVideo" autoplay="autoplay" class="first-video">-->
-                <!--    <source src="/dist/assets/img/burger_video.mp4">-->
-                <!--</video>-->
+                <video id="myVideo" autoplay="autoplay" class="first-video">
+                    <source src="/dist/assets/img/burger_video.mp4">
+                </video>
                 <div class="container clear-fix">
                     <header class="header clear-fix">
                         <div class="header__logo">
@@ -43,17 +43,17 @@
                         <div class="header__menu">
                             <nav class="nav">
                                 <ul class="nav__list clear-fix">
-                                    <li class="nav__item"><a class="nav__link" href="#best">о нас</a>
+                                    <li class="nav__item"><a class="nav__link" href="#1">о нас</a>
                                     </li>
-                                    <li class="nav__item"><a class="nav__link" href="#burgers">бургеры</a>
+                                    <li class="nav__item"><a class="nav__link" data-index="2" href="/#2">бургеры</a>
                                     </li>
-                                    <li class="nav__item"><a class="nav__link" href="#team">команда</a>
+                                    <li class="nav__item"><a class="nav__link" data-index="3" href="/#3">команда</a>
                                     </li>
-                                    <li class="nav__item"><a class="nav__link" href="#menu">меню</a>
+                                    <li class="nav__item"><a class="nav__link" href="4">меню</a>
                                     </li>
-                                    <li class="nav__item"><a class="nav__link" href="#reviews">отзывы</a>
+                                    <li class="nav__item"><a class="nav__link" href="5">отзывы</a>
                                     </li>
-                                    <li class="nav__item"><a class="nav__link" href="#order">контакты</a>
+                                    <li class="nav__item"><a class="nav__link" href="6">контакты</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -523,13 +523,13 @@
         										</label>
                                 <label class="order__form-block">
         											<div class="order__form-label">Телефон</div>
-        											<input class="order__form-input phone-mask" required="" data-parsley-trigger="change"  name="phone" type="text" placeholder="">
+        											<input class="order__form-input phone-mask" required=""  data-parsley-trigger="change"  name="phone" type="text" placeholder="">
         										</label>
                             </div>
                             <div class="order__form-row">
                                 <label class="order__form-block">
         											<div class="order__form-label">Улица</div>
-        											<input class="order__form-input" required="" data-parsley-trigger="change" name="street" type="text" placeholder="">
+        											<input class="order__form-input" required="" data-parsley-type="digits" data-parsley-trigger="change" name="street" type="text" placeholder="">
         										</label>
                             </div>
                             <div class="order__form-row order__form-row_quatro">
@@ -586,7 +586,7 @@
                 </div>
             </div>
         </section>
-            <section id="map"  class="section map">
+            <section id="map1"  class="section map">
                 
                 <div id="map" style="width:100%; height: calc(100vh - 60px);"></div>
                 <footer class="footer">
@@ -667,8 +667,108 @@
     
         $(document).ready(function() {
             
+           
+            var form = $('#order-form'),
+                parsForm = form.parsley();
+
+            form.on('submit', function(e){
+			e.preventDefault();
+			
+			//if(!parsForm.isValid()){console.log('notValid');}
+
+			var thisForm = $(this);
+			var formData = thisForm.serialize();		
+
+
+			$.ajax({
+				url: 'postmaster.php',
+				type: 'POST',
+				data: formData,
+				success: function(fromrequest){
+					var jsonData = JSON.parse(fromrequest);
+					// console.dir(jsonData)
+					if (jsonData.requestStatus){//запрос отправлен
+
+						console.log('success request'),
+
+						$.fancybox.open([
+							{href : '#formsuccess'}
+							],{
+							type: 'inline',
+							width: 260,
+							fitToView: false,
+							padding: 0
+						})
+
+						$('.formpopup__close').on('click', function(){
+							$.fancybox.close();
+						});
+
+					}
+				},
+				error: function(){
+				    console.log('error', arguments);
+				}
+
+			});
+		
+		});        
+
             
-            $('#order-form').parsley();
+            
+           
+            
+            // $('#order-form').parsley();
+            
+
+//             $('#order-form').on('submit', function(e){
+// 			e.preventDefault();
+// 			// console.log('form!!!');
+
+// // console.log( $(this).serialize() );
+// 			var thisForm = $(this);
+// 			var formData = thisForm.serialize();		
+
+
+// 			$.ajax({
+// 				url: 'mail.php',
+// 				type: 'POST',
+// 				data: formData,
+// 				success: function(fromrequest){
+// 					var jsonData = JSON.parse(fromrequest);
+// 					// console.dir(jsonData)
+// 					if (jsonData.requestStatus){//запрос отправлен
+
+// 						console.log('success request'),
+
+// 						$.fancybox.open([
+// 							{href : '#formsuccess'}
+// 							],{
+// 							type: 'inline',
+// 							width: 260,
+// 							fitToView: false,
+// 							padding: 0
+// 						})
+
+// 						$('.formpopup__close').on('click', function(){
+// 							$.fancybox.close();
+// 						});
+
+// 					}
+// 				}
+
+// 			});
+			
+
+// 		});
+
+	
+            
+            
+            
+            
+             $('#order-form').parsley();
+             console.log('par', $('#order-form'), $('#order-form').parsley().isValid());
             
               //////////////
             $(function() {
@@ -688,18 +788,7 @@
                     $.fancybox.close();
                 });
             });
-        //   $(".review__view").fancybox({
-        //       maxWidth: 400,
-        //       maxHeight: 600,
-        //       fitToView: false,
-        //       width: '50%',
-        //       height: '1000%',
-        //       autoSize: false,
-        //       closeClick: false,
-        //       openEffect: 'none',
-        //       closeEffect: 'none'
-        //   });
-		
+       
             ////////////////////
             
             
@@ -715,7 +804,7 @@
                                                 // "ease-out", "ease-in-out", or even cubic bezier value such as "cubic-bezier(0.175, 0.885, 0.420, 1.310)"
                animationTime: 1000,             // AnimationTime let you define how long each section takes to animate
                pagination: true,                // You can either show or hide the pagination. Toggle true for show, false for hide.
-               updateURL: false,                // Toggle this true if you want the URL to be updated automatically when the user scroll to each page.
+               updateURL: true,                // Toggle this true if you want the URL to be updated automatically when the user scroll to each page.
                beforeMove: function(index) {},  // This option accepts a callback function. The function will be called before the page moves.
                afterMove: function(index) {},   // This option accepts a callback function. The function will be called after the page moves.
                loop: false,                     // You can have the page loop back to the top/bottom when the user navigates at up/down on the first/last page.
@@ -729,12 +818,12 @@
              
             
             
-            // console.log(document.querySelector('.first-video'));
-            // var video = document.getElementById("myVideo");
-            // myVideo.onended = function() {
+          
+            var video = document.getElementById("myVideo");
+            myVideo.onended = function() {
                
-            //   $('.first-video').fadeTo( "slow" , 0);
-            // };
+              $('.first-video').fadeTo( "slow" , 0);
+            };
             
             
             var slider = $(".owl-carousel").owlCarousel({
@@ -899,12 +988,15 @@
             var myMap = new ymaps.Map('map', {
             center: [50.0, 36.20],
             zoom: 14,
-            behaviors: ['default', 'scrollZoom']
+            behaviors: ['default'],
+            controls: ['zoomControl']
         }, {
             searchControlProvider: 'yandex#search'
-        }),
+        });
+        myMap.behaviors.disable('scrollZoom');
+        
 		/*тест макета*/
-			 BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
+			var BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
             '<div style="margin: 10px;">' +
                 '<b>{{properties.name}}</b><br />' +
                 '<i id="count"></i> ' +
@@ -949,7 +1041,7 @@
                 preset: 'islands#violetIcon'
             };
         },
-       points = [
+      points = [
             [49.951903,36.211961], [49.996188294179, 36.101912435790915], [49.981329,36.242781], [49.954708,36.248870], [49.953123,36.206067]
         ],
         geoObjects = [];
@@ -1106,8 +1198,59 @@
 
           
 
+             setTimeout(function() {
+                 
+                 $(".wrapper").moveTo(7);
+                 
+                 // var sect = $('.section').each(function(index, item) {
+                 //     console.log($(item)[0].attributes['index']);
+                 // })
+
+                //  for (var i = 0, len = $('.section').length; i < len; i++) {
+                //      console.log($('.section')[i]);
+                //  }
+                //console.log($('.section')[3]);
+                //console.log($('.section')[3].offset().top);
+                
+                //$('#maincontent').css('transform',"translate3d(0 , -200%, 0)");
+                
+                // $('.onepage-pagination').find('a').removeClass('active').each(function(i, el){
+                //     if (i == 1) $(el).addClass('active');
+                // });
+                
+                // var sec = $('.section')[3];
+                // $('#maincontent').animate({scrollTop: $(sec).scrollHeight}, 3000);
+                
+                // $('#maincontent').animate({scrollTop: -100}, 'slow');
+                
+                // console.log('off', $('#maincontent').offset());
+
+                //$("#maincontent").moveTo(3);
+                
+                //console.log('sec', sec);
+                // $('#maincontent').animate({
+                //     scrollTop: $(sec).offset().top
+                // }, 800);
+                
+                // $('#maincontent').offset().top-'100%'
+                
+                // $('body, html').animate({
+                //     scrollTop: $(sec).offset().top + 500
+                // }, 1000);
+
+                
+             }, 2000);
 
 
+            // $('.nav__link').click(function(e){
+            //     e.preventDefault();
+                
+            //     var url = this.data('index');
+            //     console.log('url', url);
+                
+            //     $("#maincontent").moveTo(url);
+                
+            // });
 
 
 
@@ -1131,16 +1274,9 @@
 </html>
 
 <!--
-скролл
-отправка письма
-валижация
 навигация
+отправка письма
 вертикальное меню
 -->
 
 
-<!--
-структура проекта
-как отдавать проект клиенту
-документация по инсталляции
--->
