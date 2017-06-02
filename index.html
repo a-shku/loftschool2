@@ -896,213 +896,97 @@
             
             
             ymaps.ready(function () {
-        	var myPlacemark;
-            var myMap = new ymaps.Map('map', {
-            center: [50.0, 36.20],
-            zoom: 14,
-            behaviors: ['default'],
-            controls: ['zoomControl']
-        }, {
-            searchControlProvider: 'yandex#search'
-        });
-        myMap.behaviors.disable('scrollZoom');
-        
-		/*тест макета*/
-			var BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
-            '<div style="margin: 10px;">' +
-                '<b>{{properties.name}}</b><br />' +
-                '<i id="count"></i> ' +
-                '<button id="counter-button"> +1 </button>' +
-            '</div>', {
-
-            // Переопределяем функцию build, чтобы при создании макета начинать
-            // слушать событие click на кнопке-счетчике.
-            build: function () {
-                // Сначала вызываем метод build родительского класса.
-                BalloonContentLayout.superclass.build.call(this);
-                // А затем выполняем дополнительные действия.
-                $('#counter-button').bind('click', this.onCounterClick);
-                $('#count').html(counter);
+                var myPlacemark;
+                var myMap=new ymaps.Map('map', {
+                    center: [50.0, 36.20], zoom: 14, behaviors: ['default'], controls: ['zoomControl']
+                }
+                , {
+                    searchControlProvider: 'yandex#search'
+                }
+                );
+                myMap.behaviors.disable('scrollZoom');
+                // Создаем собственный макет с информацией о выбранном геообъекте.
+                clusterer=new ymaps.Clusterer( {
+                    clusterDisableClickZoom: true, clusterOpenBalloonOnClick: true, clusterBalloonContentLayout: 'cluster#balloonCarousel', clusterBalloonPanelMaxMapArea: 0, // Устанавливаем размеры макета контента балуна (в пикселях).
+                    clusterBalloonContentLayoutWidth: 200, clusterBalloonContentLayoutHeight: 130, // Устанавливаем максимальное количество элементов в нижней панели на одной странице
+                    clusterBalloonPagerSize: 5
+                }
+                ), getPointData=function (index) {
+                    return {
+                        balloonContentBody: '<strong>пирожковая ' + (index+1) + '</strong>', clusterCaption: 'метка <strong>' + (index+1) + '</strong>'
+                    }
+                    ;
+                }
+                , getPointOptions=function () {
+                    return {
+                        iconLayout: 'default#image',
+                		iconImageHref: 'dist/assets/img/icons/map-marker.svg',
+                		iconImageSize: [46, 58],
+                		iconImageOffset: [-20, -50]
+                    }
+                    ;
+                }
+                , points=[ [49.951903, 36.211961], [49.996188294179, 36.101912435790915], [49.981329, 36.242781], [49.954708, 36.248870], [49.953123, 36.206067]], geoObjects=[];
+                for(var i=0, len=points.length;
+                i < len;
+                i++) {
+                    geoObjects[i]=new ymaps.Placemark(points[i], getPointData(i), getPointOptions());
+                }
+                clusterer.options.set( {
+                    gridSize: 80, clusterDisableClickZoom: true
+                }
+                );
+                clusterer.add(geoObjects);
+                myMap.geoObjects.add(clusterer);
+                myMap.setBounds(clusterer.getBounds(), {
+                    checkZoomRange: true
+                }
+                );
+                // Слушаем клик на карте
+                myMap.events.add('click', function (e) {
+                    var coords=e.get('coords'), address=getAddress(coords);
+                    
+                   
+                }
+                );
+                
+                //properties
+                function placeMarkToMap(coords, address, name, place, text) {
+                    myPlacemark=createPlacemark(coords);
+                    myPlacemark.properties .set( {
+                        iconLayout: 'default#image',
+        		        iconImageHref: 'dist/assets/img/icons/map-marker.svg',
+        		        iconImageSize: [46, 58],
+        		        iconImageOffset: [-20, -50],
+                        //iconContent: name,
+                        balloonContentHeader: address +'<br> '+ place, balloonContentBody: text, balloonContentFooter: name
+                    }
+                    );
+                    clusterer.add(myPlacemark);
+                }
+                ;
+                // Создание метки
+                function createPlacemark(coords) {
+                    return new ymaps.Placemark(coords, {
+                        //iconContent: 'поиск...'
+                    }
+                    , {
+                        preset: 'islands#violetStretchyIcon', draggable: true
+                    }
+                    );
+                }
+                // Определяем адрес по координатам (обратное геокодирование)
+                function getAddress(coords) {
+                    return ymaps.geocode(coords).then(function (res) {
+                        return res.geoObjects.get(0);
+                    }
+                    );
+                }
+                ;
             }
-
-        });
-		/*тест макета*/
-             // Создаем собственный макет с информацией о выбранном геообъекте.
-	
-		clusterer = new ymaps.Clusterer({
-        clusterDisableClickZoom: true,
-        clusterOpenBalloonOnClick: true,
-        clusterBalloonContentLayout: 'cluster#balloonCarousel',
-        
-        clusterBalloonPanelMaxMapArea: 0,
-        // Устанавливаем размеры макета контента балуна (в пикселях).
-        clusterBalloonContentLayoutWidth: 200,
-        clusterBalloonContentLayoutHeight: 130,
-        // Устанавливаем максимальное количество элементов в нижней панели на одной странице
-        clusterBalloonPagerSize: 5
-       
-    }),
-            getPointData = function (index) {
-            return {
-                balloonContentBody: 'балун <strong>метки ' + index + '</strong>',
-                clusterCaption: 'метка <strong>' + index + '</strong>'
-            };
-        },
-            getPointOptions = function () {
-            return {
-                preset: 'islands#violetIcon'
-            };
-        },
-      points = [
-            [49.951903,36.211961], [49.996188294179, 36.101912435790915], [49.981329,36.242781], [49.954708,36.248870], [49.953123,36.206067]
-        ],
-        geoObjects = [];
-    for(var i = 0, len = points.length; i < len; i++) {
-        geoObjects[i] = new ymaps.Placemark(points[i], getPointData(i), getPointOptions());
-    }
-    clusterer.options.set({
-        gridSize: 80,
-        clusterDisableClickZoom: true
-    });
-    clusterer.add(geoObjects);
-    myMap.geoObjects.add(clusterer);
-    myMap.setBounds(clusterer.getBounds(), {
-        checkZoomRange: true
-    });
-	
-	// Слушаем клик на карте
-    myMap.events.add('click', function (e) {
-        var coords = e.get('coords'),
-			address = getAddress(coords);
-		//var present;
-		address.then(function(gotAddress){
-		
-				/*get reviews*/
-			new Promise(function(resolve, reject){
-				var xhr = new XMLHttpRequest();
-					xhr.responseType = 'json';
-					
-					xhr.open('post', 'http://localhost:3000/', true);
-					xhr.send(JSON.stringify({
-						op: 'get',
-						address: gotAddress.properties.get('text'),
-					}));
-					xhr.onload = function(){
-						resolve(xhr.response);
-					};/*/get reviews*/
-			}).then(function(present){
-			/*окно добавления*/
-				var wrapForRev;
-			if(present.length < 1){
-				wrapForRev = 'нет отзывов'
-			} else{
-				var list = document.createElement('ul');
-					list.classList.add('reviewsList');
-				for(var i = 0; i<present.length; i++){
-						delete present[i].coords;
-					var li = document.createElement('li');
-					for(var getReviews in present[i]){
-						
-						if(getReviews == 'date'){
-							//alert(new Date(present[i][getReviews]));
-							var date = new Date(present[i][getReviews]);
-							
-					li.innerHTML += '<p class="date">'+date+'</p>';
-						}
-						else if(getReviews == 'address'){}
-						else{
-						
-					li.innerHTML += '<p>'+present[i][getReviews]+'</p>';
-						}
-						
-					}
-					list.appendChild(li);
-				}
-								
-				var wrapForRev = document.createElement('div');
-					wrapForRev.setAttribute('id', 'pres');
-				
-				wrapForRev.appendChild(list);
-				var wrapForRev = wrapForRev.innerHTML;
-			}
-			
-			new Promise(function(resolve, reject){
-			
-				if (!myMap.balloon.isOpen()) {
-					myMap.balloon.open(coords,
-				
-				{contentHeader: gotAddress.properties.get('text')/*+gotAddress.properties.get('name')*/,
-                contentBody: '<div style="max-height:150px; overflow-y:auto;">'+wrapForRev+'</div>' +
-				    '<p>ОСТАВИТЬ ОТЗЫВ</p>'+'<input id="name1" placeholder="Name"><br><input id="place" placeholder="Place"><br>'+'<textarea id="review" placeholder="review"></textarea>',
-                contentFooter:'<button id="send" class="class1">Send</button>'
-            });
-			}
-			else {
-				myMap.balloon.close();
-			}
-				
-			document.addEventListener('click',function(e){
-				if (e.target.classList.contains('class1')){
-				   
-				var name2 = name1.value;
-			
-				var place1 = place.value;
-			
-				var text = review.value;
-			
-				
-				placeMarkToMap(coords, gotAddress.properties.get('name'), name2, place1, text);
-				 myMap.balloon.close();
-	
-				};
-	
-			});
-
-				resolve();
-			})}).then(function(){
-			
-				var button = document.getElementsByTagName('button')
-	
-			});
-			
-		});
-    });
-	
-
-	function placeMarkToMap(coords, address, name, place, text){
-		myPlacemark = createPlacemark(coords);
-			myPlacemark.properties
-                .set({
-                    //iconContent: name,
-					balloonContentHeader: address +'<br> '+ place,
-					balloonContentBody: text,
-					balloonContentFooter: name
-                });
-		clusterer.add(myPlacemark);		
-	};
-	
-    // Создание метки
-    function createPlacemark(coords) {
-        return new ymaps.Placemark(coords, {
-            //iconContent: 'поиск...'
-        }, {
-            preset: 'islands#violetStretchyIcon',
-            draggable: true
-        });
-    }
-
-    // Определяем адрес по координатам (обратное геокодирование)
-    function getAddress(coords) {
-        return ymaps.geocode(coords).then(function (res) {
-            return res.geoObjects.get(0);
-
-        });
-    };
-	
-	
-	
-});
-
+            
+            );
+            
 
           
 
