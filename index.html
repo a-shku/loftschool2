@@ -914,8 +914,7 @@
                 ), getPointData=function (index) {
                     return {
                         balloonContentBody: '<strong>пирожковая ' + (index+1) + '</strong>', clusterCaption: 'метка <strong>' + (index+1) + '</strong>'
-                    }
-                    ;
+                    };
                 }
                 , getPointOptions=function () {
                     return {
@@ -923,32 +922,36 @@
                 		iconImageHref: 'dist/assets/img/icons/map-marker.svg',
                 		iconImageSize: [46, 58],
                 		iconImageOffset: [-20, -50]
-                    }
-                    ;
+                    };
                 }
-                , points=[ [49.951903, 36.211961], [49.996188294179, 36.101912435790915], [49.981329, 36.242781], [49.954708, 36.248870], [49.953123, 36.206067]], geoObjects=[];
-                for(var i=0, len=points.length;
-                i < len;
-                i++) {
-                    geoObjects[i]=new ymaps.Placemark(points[i], getPointData(i), getPointOptions());
+                //predefined coordinates for placemark
+                , points = [
+                    [49.951903, 36.211961],
+                    [49.996188294179, 36.101912435790915],
+                    [49.981329, 36.242781],
+                    [49.954708, 36.248870],
+                    [49.953123, 36.206067]
+                ], geoObjects = [];
+                for (var i = 0, len = points.length; i < len; i++) {
+                    geoObjects[i] = new ymaps.Placemark(points[i], getPointData(i), getPointOptions());
                 }
-                clusterer.options.set( {
-                    gridSize: 80, clusterDisableClickZoom: true
-                }
-                );
+                clusterer.options.set({
+                    gridSize: 80,
+                    clusterDisableClickZoom: true
+                });
                 clusterer.add(geoObjects);
                 myMap.geoObjects.add(clusterer);
                 myMap.setBounds(clusterer.getBounds(), {
                     checkZoomRange: true
-                }
-                );
-                // Слушаем клик на карте
-                myMap.events.add('click', function (e) {
-                    var coords=e.get('coords'), address=getAddress(coords);
-                    
+                });
+                // Слушаем клик на карте & get coordinates
+                myMap.events.add('click', function(e) {
+                    var coords = e.get('coords'),
+                        address = getAddress(coords);
+                        
+                        
                    
-                }
-                );
+                });
                 
                 //properties
                 function placeMarkToMap(coords, address, name, place, text) {
@@ -963,8 +966,8 @@
                     }
                     );
                     clusterer.add(myPlacemark);
-                }
-                ;
+                    console.log('222', myPlacemark);
+                };
                 // Создание метки
                 function createPlacemark(coords) {
                     return new ymaps.Placemark(coords, {
@@ -978,14 +981,23 @@
                 // Определяем адрес по координатам (обратное геокодирование)
                 function getAddress(coords) {
                     return ymaps.geocode(coords).then(function (res) {
+                        console.log('reverseCoord', res);
+                        
                         return res.geoObjects.get(0);
                     }
                     );
-                }
-                ;
-            }
-            
-            );
+                };
+               
+                       
+                geoObjects.forEach(function(item) {
+                    
+                    item.events.add('click', function() {
+                        console.log(5555555);
+                         //console.log(getAddress(coords));
+                    });
+                })
+               
+            });
             
 
           
