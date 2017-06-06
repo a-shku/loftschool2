@@ -57,20 +57,43 @@ gulp.task('js:app', ['clean:js:app'], function() {
         .pipe(gulp.dest('dist/assets/js/'));
 });
 
+// gulp.task('modules', function() {
+//     gulp.src('source/custom/js/*.js')
+//         .pipe(plugins.debug({title: 'src'}))
+//         .pipe(plugins.concat('document.ready.js'))
+//         .pipe(plugins.debug({title: 'concat'}))
+//         .pipe(gulp.dest('source/custom'))
+//         .pipe(plugins.debug({title: 'dest'}));
+
+//     gulp.src('source/custom/modules.js')
+//         .pipe(plugins.debug({title: 'srcEND'}))
+//         .pipe(gfi({
+//             "/* file 1 */": "source/custom/document.ready.js"
+//         }))
+//         .pipe(plugins.debug({title: 'insert'}))
+//         .pipe(gulp.dest('source/custom/1/js'))
+//         .pipe(plugins.debug({title: 'destEND'}))
+// }); //работает с двух запусков
+
 gulp.task('modules', function() {
     gulp.src('source/custom/js/*.js')
         .pipe(plugins.debug({title: 'src'}))
+        .pipe(plugins.sourcemaps.init())
         .pipe(plugins.concat('document.ready.js'))
         .pipe(plugins.debug({title: 'concat'}))
+        .pipe(plugins.sourcemaps.write())
         .pipe(gulp.dest('source/custom'))
         .pipe(plugins.debug({title: 'dest'}));
 
-    gulp.src('source/custom/modules.js')
+        gulp.src('source/custom/modules.js')
+        //.pipe(plugins.sourcemaps.init())
         .pipe(plugins.debug({title: 'srcEND'}))
         .pipe(gfi({
             "/* file 1 */": "source/custom/document.ready.js"
         }))
         .pipe(plugins.debug({title: 'insert'}))
+        //.pipe(plugins.sourcemaps.write())
         .pipe(gulp.dest('source/custom/1/js'))
         .pipe(plugins.debug({title: 'destEND'}))
 });
+
