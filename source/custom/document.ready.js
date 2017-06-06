@@ -7,3 +7,10 @@
 		$("#maincontent").moveTo(linkIndex);
 	});
 
+
+
+    var video = document.getElementById("myVideo");
+    video.onended = function() {
+        $('.first-video').fadeTo("slow", 0);
+    };
+
